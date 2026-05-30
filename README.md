@@ -1,0 +1,2 @@
+# AI-Powered-Customer-Feedback-Intelligence-System
+Developed an AI-powered customer feedback intelligence platform using TF-IDF, Logistic Regression, and BERT-based sentiment analysis. Designed end-to-end NLP pipeline including preprocessing, feature engineering, model evaluation, explainability, and review summarization. Achieved 90%+ classification accuracy and deployed via FastAPI and Streamlit.
