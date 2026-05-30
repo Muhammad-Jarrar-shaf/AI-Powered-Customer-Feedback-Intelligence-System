@@ -1,2 +1,11 @@
-# AI-Powered-Customer-Feedback-Intelligence-System
-Developed an AI-powered customer feedback intelligence platform using TF-IDF, Logistic Regression, and BERT-based sentiment analysis. Designed end-to-end NLP pipeline including preprocessing, feature engineering, model evaluation, explainability, and review summarization. Achieved 90%+ classification accuracy and deployed via FastAPI and Streamlit.
+Problem Statement
+
+Given a product review, automatically classify whether the review expresses positive or negative sentiment.
+
+Examples:
+
+Review	Sentiment
+This phone is amazing->Positive
+Waste of money->Negative
+Excellent battery life->Positive
+Stopped working after a week->Negative
