@@ -17,7 +17,7 @@ import re
 import pandas as pd
 
 # Load labeled dataset
-df = pd.read_csv("Data/reviews.csv")
+df = pd.read_csv("Data/labeled_reviews.csv")
 
 print("Dataset Shape:")
 print(df.shape)
