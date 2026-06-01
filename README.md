@@ -238,19 +238,29 @@ project1/
 * Feature engineering decisions directly affect model complexity and performance.
 
 ---
+## Day 2 - Model Training and Evaluation
 
-## Next Steps (Day 2)
+Implemented a complete machine learning pipeline using TF-IDF and Logistic Regression.
 
-* Train/Test Split
-* Logistic Regression Model
-* Model Evaluation
-* Precision, Recall, F1 Score
-* Confusion Matrix
-* Handling Class Imbalance
-* Error Analysis
+Key steps:
+- Train-test split with stratification
+- TF-IDF vectorization
+- Logistic Regression baseline
+- Class imbalance handling using class_weight="balanced"
+- Evaluation using Precision, Recall, F1 Score, and Confusion Matrix
+- Error analysis of misclassified reviews
+- Extraction of most influential positive and negative words
 
----
+Results:
 
+Balanced Logistic Regression:
+- Accuracy: 95.73%
+- Precision (Negative): 66.7%
+- Recall (Negative): 80.0%
+- F1 Score (Negative): 72.7%
+
+Key Insight:
+A baseline model achieved high accuracy but failed to identify any negative reviews. Using class-weight balancing significantly improved detection of minority-class reviews.
 ## Author
 
 Muhammad Jarrar Shaf
