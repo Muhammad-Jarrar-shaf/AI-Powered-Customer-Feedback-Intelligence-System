@@ -460,6 +460,322 @@ The inference pipeline successfully generated predictions on unseen text. Testin
 * Model Deployment Preparation
 * End-to-End Machine Learning Workflow
 
+# Day 6 – Model Interpretability & Error Analysis
+
+## Overview
+
+On Day 6, the focus shifted from model performance to understanding **why the model makes its predictions**. While previous stages concentrated on training, evaluation, tuning, and persistence, this phase explored the internal behavior of the final Logistic Regression model.
+
+The goal was to identify the most influential words driving sentiment predictions, explain individual predictions, and analyze classification errors to better understand the strengths and limitations of a TF-IDF + Logistic Regression approach.
+
+---
+
+## Objectives
+
+* Interpret the trained Logistic Regression model
+* Extract feature importance using model coefficients
+* Identify the strongest positive and negative sentiment indicators
+* Explain individual review predictions
+* Investigate model misclassifications
+* Generate visualizations for model transparency
+* Develop interview-ready explanations of model behavior
+
+---
+
+## Methodology
+
+### Feature Importance Analysis
+
+The coefficients learned by the Logistic Regression model were extracted and mapped to TF-IDF vocabulary terms.
+
+**Interpretation:**
+
+* Positive coefficients push predictions toward the **Positive** class.
+* Negative coefficients push predictions toward the **Negative** class.
+* Larger absolute coefficient values indicate stronger influence.
+
+---
+
+## Top Positive Features
+
+The model identified the following words as the strongest indicators of positive sentiment:
+
+| Word       | Coefficient |
+| ---------- | ----------: |
+| great      |        2.69 |
+| alexa      |        2.02 |
+| love       |        1.41 |
+| sound      |        1.41 |
+| tap        |        1.30 |
+| gift       |        1.21 |
+| easy       |        1.18 |
+| echo       |        1.08 |
+| headphones |        1.07 |
+| speaker    |        1.06 |
+
+### Key Observation
+
+Words associated with product satisfaction, recommendation, ease of use, and Amazon Echo devices strongly influenced positive predictions.
+
+---
+
+## Top Negative Features
+
+The model identified the following words as the strongest indicators of negative sentiment:
+
+| Word     | Coefficient |
+| -------- | ----------: |
+| remote   |       -2.21 |
+| terrible |       -1.97 |
+| app      |       -1.54 |
+| months   |       -1.54 |
+| netflix  |       -1.53 |
+| horrible |       -1.40 |
+| charger  |       -1.39 |
+| return   |       -1.33 |
+| useless  |       -1.32 |
+| waste    |       -1.31 |
+
+### Key Observation
+
+Words commonly associated with product failures, defects, returns, and customer dissatisfaction heavily influenced negative predictions.
+
+---
+
+## Individual Prediction Analysis
+
+A prediction explanation module was implemented to inspect the contribution of individual words within a review.
+
+### Example 1
+
+**Review**
+
+```text
+This product is amazing and works perfectly
+```
+
+**Prediction**
+
+```text
+Positive
+```
+
+**Probability**
+
+```text
+Positive: 59.12%
+Negative: 40.88%
+```
+
+**Contributing Words**
+
+| Word      | Contribution |
+| --------- | -----------: |
+| product   |       +0.115 |
+| works     |       +0.074 |
+| amazing   |       -0.026 |
+| perfectly |       -0.176 |
+
+### Finding
+
+Surprisingly, the words **"amazing"** and **"perfectly"** carried slightly negative weights. This highlights a limitation of small datasets and sparse TF-IDF representations, where words may receive unintuitive coefficients based on training distribution.
+
+---
+
+### Example 2
+
+**Review**
+
+```text
+Terrible quality and complete waste of money
+```
+
+**Prediction**
+
+```text
+Negative
+```
+
+**Probability**
+
+```text
+Negative: 85.50%
+Positive: 14.50%
+```
+
+### Strongest Contributors
+
+```text
+terrible
+waste
+money
+complete
+```
+
+The model correctly identified multiple highly negative sentiment indicators.
+
+---
+
+### Example 3
+
+**Review**
+
+```text
+Very disappointed with this purchase
+```
+
+**Prediction**
+
+```text
+Positive
+```
+
+**Probability**
+
+```text
+Positive: 60.25%
+Negative: 39.75%
+```
+
+**Contributing Words**
+
+| Word         | Contribution |
+| ------------ | -----------: |
+| purchase     |       +0.173 |
+| disappointed |       -0.138 |
+
+### Finding
+
+Although the word **"disappointed"** contributed negatively, the word **"purchase"** had a stronger positive influence, resulting in an incorrect positive prediction.
+
+This demonstrates how TF-IDF models rely on individual word statistics rather than contextual meaning.
+
+---
+
+## Key Insights
+
+### Insight 1: Correlation vs Meaning
+
+The model learns statistical relationships rather than true semantic understanding.
+
+Example:
+
+```text
+remote
+```
+
+became the strongest negative feature, not because the word itself is negative, but because reviews mentioning "remote" were frequently negative in the training data.
+
+---
+
+### Insight 2: Lack of Context Awareness
+
+TF-IDF treats words independently.
+
+Examples:
+
+```text
+good
+not good
+```
+
+Both contain the word:
+
+```text
+good
+```
+
+The model cannot fully understand the contextual difference.
+
+---
+
+### Insight 3: No Phrase Understanding
+
+The model processes:
+
+```text
+very disappointed
+```
+
+as separate words:
+
+```text
+very
+disappointed
+```
+
+rather than a single sentiment-bearing phrase.
+
+---
+
+### Insight 4: Small Dataset Effects
+
+With only:
+
+```text
+1,053 reviews
+```
+
+and severe class imbalance:
+
+```text
+Positive: 977
+Negative: 76
+```
+
+some coefficients may not accurately represent real-world sentiment.
+
+---
+
+## Files Generated
+
+```text
+Results/
+
+top_positive_words.csv
+top_negative_words.csv
+
+top_positive_words.png
+top_negative_words.png
+
+all_feature_importance.csv
+```
+
+---
+
+## Skills Demonstrated
+
+* Model Interpretability
+* Feature Importance Analysis
+* Logistic Regression Coefficient Analysis
+* Prediction Explainability
+* Error Analysis
+* Data Visualization
+* Business-Oriented Model Evaluation
+
+---
+
+## Key Takeaway
+
+Day 6 transformed the project from a simple sentiment classifier into an interpretable machine learning system. By analyzing feature importance and explaining individual predictions, deeper insights were gained into model behavior, strengths, limitations, and potential areas for future improvement.
+
+The analysis revealed that while the Logistic Regression model performs well overall, TF-IDF-based approaches remain limited by their inability to capture context, semantics, and phrase-level meaning. These findings provide a strong foundation for discussing model decisions, trade-offs, and real-world deployment considerations during technical interviews.
+
+---
+
+## Day 6 Deliverables
+
+* ✅ Feature Importance Extraction
+* ✅ Positive & Negative Feature Analysis
+* ✅ Prediction Explanation System
+* ✅ Misclassification Investigation
+* ✅ Visualization of Important Features
+* ✅ Model Transparency & Interpretability
+* ✅ Interview-Ready Discussion Points
+
+**Project Status:** Day 6 Complete
+
+
 ## Author
 
 Muhammad Jarrar Shaf
