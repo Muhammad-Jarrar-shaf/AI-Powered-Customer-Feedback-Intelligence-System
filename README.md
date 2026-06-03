@@ -261,6 +261,85 @@ Balanced Logistic Regression:
 
 Key Insight:
 A baseline model achieved high accuracy but failed to identify any negative reviews. Using class-weight balancing significantly improved detection of minority-class reviews.
+
+## Day 3 – Model Comparison & Selection
+
+### Objective
+
+The goal of Day 3 was to compare multiple machine learning algorithms and identify the most suitable model for sentiment classification on an imbalanced Amazon reviews dataset.
+
+### Models Evaluated
+
+The following models were trained and evaluated using TF-IDF features:
+
+* Logistic Regression (Balanced)
+* Multinomial Naive Bayes
+* Linear Support Vector Machine (Linear SVM)
+
+### Evaluation Metrics
+
+Because the dataset is highly imbalanced (approximately 93% Positive and 7% Negative reviews), model selection was based primarily on:
+
+* Recall (Negative Class)
+* F1 Score (Negative Class)
+* Cross-Validation Performance
+
+Accuracy was not used as the primary decision metric because it can be misleading on imbalanced datasets.
+
+### Results
+
+| Model                   | Accuracy | Precision | Recall | F1 Score |
+| ----------------------- | -------: | --------: | -----: | -------: |
+| Logistic Regression     |   95.73% |      0.67 |   0.80 |     0.73 |
+| Multinomial Naive Bayes |   92.89% |      0.00 |   0.00 |     0.00 |
+| Linear SVM              |   94.79% |      0.83 |   0.33 |     0.48 |
+
+### Cross-Validation Results
+
+| Model                   | Mean CV Score (F1 Macro) |
+| ----------------------- | -----------------------: |
+| Logistic Regression     |                   0.7127 |
+| Linear SVM              |                   0.6819 |
+| Multinomial Naive Bayes |                   0.4812 |
+
+### Key Findings
+
+#### Logistic Regression
+
+* Correctly identified 12 out of 15 negative reviews.
+* Achieved the highest recall and F1 score for the minority class.
+* Produced the strongest cross-validation performance.
+
+#### Multinomial Naive Bayes
+
+* Failed to detect any negative reviews.
+* Predicted all reviews as positive.
+* Demonstrated the limitations of relying on accuracy for imbalanced datasets.
+
+#### Linear SVM
+
+* Achieved high precision but very low recall.
+* Missed a significant number of negative reviews.
+* Underperformed Logistic Regression on minority-class detection.
+
+### Final Model Selection
+
+Logistic Regression with class weighting was selected as the final model because it achieved:
+
+* Highest Negative Recall (80%)
+* Highest Negative F1 Score (0.73)
+* Best Cross-Validation Performance (0.7127)
+
+### Skills Demonstrated
+
+* Model Comparison
+* Imbalanced Classification
+* Performance Evaluation
+* Cross Validation
+* Confusion Matrix Analysis
+* Classification Report Interpretation
+* Production Model Selection
+
 ## Author
 
 Muhammad Jarrar Shaf
