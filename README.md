@@ -339,6 +339,72 @@ Logistic Regression with class weighting was selected as the final model because
 * Confusion Matrix Analysis
 * Classification Report Interpretation
 * Production Model Selection
+## Day 4 – Hyperparameter Tuning
+
+### Objective
+
+The objective of Day 4 was to optimize the selected Logistic Regression model using hyperparameter tuning and cross-validation.
+
+### Approach
+
+GridSearchCV was used with 5-fold cross-validation to evaluate different values of the regularization parameter C.
+
+Parameter Grid:
+
+```python
+{
+    "C": [0.01, 0.1, 1, 10, 100]
+}
+```
+
+Scoring Metric:
+
+```python
+f1_macro
+```
+
+### Best Hyperparameters
+
+```python
+{
+    "C": 1
+}
+```
+
+### Best Cross-Validation Score
+
+```text
+0.7127
+```
+
+### Tuned Model Performance
+
+| Metric    |  Score |
+| --------- | -----: |
+| Accuracy  | 95.73% |
+| Precision | 66.67% |
+| Recall    | 80.00% |
+| F1 Score  | 72.73% |
+
+### Findings
+
+The tuning process revealed that the default Logistic Regression configuration was already optimal for this dataset. None of the tested regularization strengths produced a higher cross-validation score than the baseline configuration.
+
+### Key Takeaways
+
+* Implemented GridSearchCV for automated hyperparameter optimization.
+* Applied 5-fold cross-validation for robust model selection.
+* Validated that the chosen Logistic Regression model was already well-configured.
+* Confirmed model stability through consistent cross-validation and test-set performance.
+
+### Skills Demonstrated
+
+* Hyperparameter Tuning
+* GridSearchCV
+* Cross Validation
+* Model Optimization
+* Regularization Analysis
+* Performance Validation
 
 ## Author
 
