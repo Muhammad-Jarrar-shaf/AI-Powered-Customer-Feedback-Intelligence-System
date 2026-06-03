@@ -1,0 +1,77 @@
+
+====================================================
+BUSINESS INSIGHTS REPORT
+====================================================
+
+CUSTOMER SATISFACTION OVERVIEW
+------------------------------
+Total Reviews: 1053
+
+Positive Reviews: 977
+Negative Reviews: 76
+
+Positive Sentiment Percentage:
+92.78%
+
+Negative Sentiment Percentage:
+7.22%
+
+----------------------------------------------------
+
+TOP POSITIVE DRIVERS
+--------------------
+
+Customers frequently mention:
+
+kindle, like, amazon, great, use
+
+These terms indicate strong appreciation
+for product quality, usability and features.
+
+----------------------------------------------------
+
+TOP CUSTOMER COMPLAINTS
+-----------------------
+
+Negative reviews frequently mention:
+
+remote, amazon, just, dont, cover
+
+These areas require further investigation.
+
+----------------------------------------------------
+
+BUSINESS RECOMMENDATIONS
+------------------------
+
+1. Continue promoting features customers love.
+
+2. Highlight strengths in marketing campaigns.
+
+3. Investigate recurring complaints.
+
+4. Improve product reliability.
+
+5. Improve customer support experience.
+
+6. Monitor future reviews for emerging issues.
+
+----------------------------------------------------
+
+EXECUTIVE SUMMARY
+-----------------
+
+Customer sentiment is overwhelmingly positive,
+indicating strong product acceptance.
+
+Most praise revolves around ease of use,
+product quality and overall satisfaction.
+
+Negative feedback appears concentrated around
+specific product issues rather than widespread
+customer dissatisfaction.
+
+Addressing recurring complaints could further
+increase customer satisfaction and reduce returns.
+
+====================================================
