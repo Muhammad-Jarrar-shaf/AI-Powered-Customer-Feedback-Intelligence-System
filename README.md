@@ -405,6 +405,60 @@ The tuning process revealed that the default Logistic Regression configuration w
 * Model Optimization
 * Regularization Analysis
 * Performance Validation
+## Day 5 – Model Persistence & Inference Pipeline
+
+### Objective
+
+The objective of Day 5 was to make the sentiment analysis model reusable without retraining by implementing model persistence and an inference pipeline.
+
+### Approach
+
+The final Logistic Regression model and TF-IDF vectorizer were serialized using Joblib and stored for future use.
+
+Saved Artifacts:
+
+* sentiment_model.pkl
+* tfidf_vectorizer.pkl
+
+### Model Persistence
+
+The trained model was saved using:
+
+```python
+joblib.dump(model, "Models/sentiment_model.pkl")
+```
+
+The TF-IDF vectorizer was saved using:
+
+```python
+joblib.dump(vectorizer, "Models/tfidf_vectorizer.pkl")
+```
+
+### Inference Pipeline
+
+The saved artifacts were loaded back into memory and used to generate predictions for completely new reviews without retraining the model.
+
+Example Predictions:
+
+| Review                                      | Predicted Sentiment |
+| ------------------------------------------- | ------------------- |
+| This product is amazing and works perfectly | Positive            |
+| Terrible quality, waste of money            | Negative            |
+| I love this device and would recommend it   | Positive            |
+| Very disappointed with this purchase        | Positive            |
+
+### Key Findings
+
+The inference pipeline successfully generated predictions on unseen text. Testing also revealed examples where human interpretation differed from model predictions, highlighting opportunities for future improvement through additional training data and advanced feature engineering.
+
+### Skills Demonstrated
+
+* Model Serialization
+* Joblib
+* Inference Pipeline Development
+* Production Readiness
+* Model Deployment Preparation
+* End-to-End Machine Learning Workflow
 
 ## Author
 
